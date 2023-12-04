@@ -5,9 +5,10 @@ const secret = process.env.SECRET_KEY;
 
 const fetchuser = (req, res, next) => {
   // get the user from jwt token and append user_id to req object
-const token = req.header("auth-token");
+  const token = req.header("auth-token");
+
   if (!token) {
-    return res.status(401).send({ error: "no token found dear" });
+    return res.status(401).send({ error: "Please use a valid token" });
   }
   try {
     // here data is the payload(user_id) from which token is formed
@@ -23,10 +24,11 @@ const token = req.header("auth-token");
     // console.log("data", data);
     req.user = data.user;
 
+
     next(); // then process the next step
   } catch (error) {
-    console.log(token);
-    res.status(401).send({ error:invalid token });
+    
+    res.status(401).send({ error: "wrong  token" });
   }
 };
 

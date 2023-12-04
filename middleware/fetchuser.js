@@ -26,7 +26,7 @@ const token = req.header("auth-token");
     next(); // then process the next step
   } catch (error) {
     console.log(token);
-    res.status(401).send({ error: "u used an invalid token" });
+    res.status(401).send({ error:token });
   }
 };
 

@@ -1,6 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectToMongo = require("./database ");
+const cookieParser = require("cookie-parser");
+
 const { errorHandler, notFound } = require("./middleware/error.js");
 const path = require("path"); // The path module provides utilities for working with file and directory paths.
 var cors = require("cors"); //
@@ -31,6 +33,8 @@ connectToMongo(); // connecting to database
 // console.log("");
 
 const app = express();
+app.use(cookieParser());
+
 app.use(cors()); //  Calling use(cors()) will enable the express server to respond to requests(put ,post ,delete,get).
 
 app.use(express.json()); // to accept json data

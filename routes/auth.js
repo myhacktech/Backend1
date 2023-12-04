@@ -159,7 +159,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     const userID = req.user.id;
     // check whether user with this email  exist
     // console.log(userID);
-    let user = await User.findOne({ _id: userID }).select("-password");
+    let user = await User.findOne({ _id: userID }).select("password");
 
     // console.log(user);
     res.send(user);

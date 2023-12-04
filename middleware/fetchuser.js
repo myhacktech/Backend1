@@ -10,6 +10,7 @@ const fetchuser = (req, res, next) => {
   if (!token) {
     return res.status(401).send({ error: "no token found dear" });
   }
+  console.log(token);
   try {
     // here data is the payload(user_id) from which token is formed
     // here we take token from request header and then we verify with secret_key

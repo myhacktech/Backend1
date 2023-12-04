@@ -5,7 +5,6 @@ const secret = process.env.SECRET_KEY;
 
 const fetchuser = (req, res, next) => {
   // get the user from jwt token and append user_id to req object
-  const token = req.header("auth-token");
 
   if (!token) {
     return res.status(401).send({ error: "no token found dear" });

@@ -9,7 +9,6 @@ const token = req.header("auth-token");
   if (!token) {
     return res.status(401).send({ error: "no token found dear" });
   }
-  console.log(token);
   try {
     // here data is the payload(user_id) from which token is formed
     // here we take token from request header and then we verify with secret_key
@@ -26,6 +25,7 @@ const token = req.header("auth-token");
 
     next(); // then process the next step
   } catch (error) {
+    console.log(token);
     res.status(401).send({ error: "u used an invalid token" });
   }
 };
